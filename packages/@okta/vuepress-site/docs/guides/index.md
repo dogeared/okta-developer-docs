@@ -27,6 +27,7 @@ guides:
  - build-sso-integration
  - submit-app
  - protect-your-api
+ - quickstart
  - refresh-tokens
  - request-user-consent
  - revoke-tokens
