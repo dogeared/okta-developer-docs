@@ -8,6 +8,4 @@ export default ({
   siteData
 }) => {
   Vue.component('v-select', VueSelect);
-
-
 }

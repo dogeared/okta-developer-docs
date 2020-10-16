@@ -90,7 +90,7 @@ module.exports = [
     subLinks: [
       { title: '.Net', path: '/code/dotnet/aspnetcore/' },
       { title: 'Go', path: '/code/go/' },
-      { title: 'Java', path: '/code/java/' },
+      { title: 'Java', path: '/code/java/spring/' },
       { title: 'Node.js', path: '/code/nodejs/' },
       { title: 'PHP', path: '/code/php/' },
       { title: 'Python', path: '/code/python/' },

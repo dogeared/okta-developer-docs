@@ -1,5 +1,5 @@
 ---
-title: Add User Management to Your Spring App
+title: Add Authentication to Your Spring Boot App
 language: Java
 integration: back-end
 icon: code-spring
@@ -9,85 +9,84 @@ meta:
 ---
 
 <ul class='language-tabs'>
-	<li>
-		<RouterLink to='/code/java/'>
-			<i class='icon code-java-32'></i><span>Java</span>
-		</RouterLink>
-	</li>
 	<li >
 		<RouterLink to='/code/java/spring/'>
 			<i class='icon code-spring-32'></i><span>Spring</span>
+		</RouterLink>
+	</li>
+	<li>
+		<RouterLink to='/code/java/'>
+			<i class='icon code-java-32'></i><span>Java</span>
 		</RouterLink>
 	</li>
 </ul>
 
 ## Get Started with Spring + Okta
 
-New to Okta? Our how to guide will walk you through adding user authentication to your Spring app in minutes.
+### 1. What is Okta
 
-<ul class='language-ctas'>
-	<li>
-		<a href='https://developer.okta.com/signup/' class='Button--red' data-proofer-ignore>
-			<span>Create Free Account</span>
-		</a>
-	</li>
-	<li>
-		<a href='/docs/guides/sign-into-web-app/springboot/before-you-begin/' class='Button--blue' data-proofer-ignore>
-			<span>How To Guide</span>
-		</a>
-	</li>
-</ul>
+Okta is an Identity Access Management platform. Okta manages the security of your users.
 
-## Okta Spring Boot Starter
+This means that you can offload authentication to Okta so you can focus on the business logic of what your building.
 
-The Okta Spring Boot Starter can be used to add OAuth 2.0 authorization to Spring Boot applications.
+Work on the following sections to quickly integrate authentication into your app. Feel free to skip over any sections you already know about by clicking on the navigation to the right.
 
-<a href='https://github.com/okta/okta-spring-boot'>
-	<span class='fa fa-github'></span> <span>Spring Integration Source</span>
-</a>
+> **NOTE:** Okta is much, much more than authentication, but this is the best place to start. There's a whole section on learning more below.
 
-## Spring Libraries
+### 2. Create an Okta Account
 
-<ul class="language-libraries">
-	<li>
-		<i class='fa fa-github'></i>
-		<a href="https://github.com/okta/okta-spring-boot">
-			<span>Okta Spring Boot Starter</span>
-		</a>
-	</li>
-</ul>
+New to Okta? Follow these instructions to get set up.
 
-## Spring Samples
+1. [Create A Free Account](https://developer.okta.com/signup/){.Button--red data-proofer-ignore .card}
+2. Fill out the form on the tab that opens up.
+3. Click the link you receive in your email to set a password.
+4. Come back here to continue...
 
-<ul class="language-libraries">
-	<li>
-		<i class='fa fa-github'></i>
-		<a href="https://github.com/okta/samples-java-spring">
-			<span>Spring Security OAuth Sample Applications for Okta</span>
-		</a>
-	</li>
-</ul>
+### 3. Create an Okta App for Authentication
 
-## Recommended Guides
+1. Navigate to **Applications** and click **Add Application**
+2. Click **Web** and click **Next**
+3. Give it a **Name** and click **Done**
+4. Note the **Client ID** and **Client Secret**. You'll need them later.
 
+> **NOTE:** You just created an OpenID Connect App. Don't know what that is? Don't worry - you don't need to know yet. If you want to find out more now, check out [this guide](/docs/concepts/oauth-openid/){target="_blank" rel="noopener noreferrer"}.
 
-- [Okta Authentication How To Guide](/docs/guides/sign-into-web-app/springboot/before-you-begin/)
-- [Social Login](/docs/concepts/social-login/)
-- [Validate access tokens](/docs/guides/validate-access-tokens)
-- [Validate ID tokens](/docs/guides/validate-id-tokens)
-- [Spring Security SAML](/code/java/spring_security_saml/)
+### 4. Build Okta into a Spring Boot App
 
-## Related Blog Posts
+1. You'll be working with a Spring Boot sample from [this github repo](https://github.com/okta/samples-java-spring){target="_blank" rel="noopener noreferrer"}.
+2. From your terminal, execute the following:
 
+	```bash
+	git clone https://github.com/okta/samples-java-spring
+	cd samples-java-spring/okta-hosted-login
+	mvn -Dokta.oauth2.issuer=https://{yourOktaDomain}/oauth2/default \
+		-Dokta.oauth2.clientId={clientId} \
+		-Dokta.oauth2.clientSecret={clientSecret} \
+		spring-boot:run
+	```
 
-- [Build a Basic CRUD App with Angular 5.0 and Spring Boot 2.0](/blog/2017/12/04/basic-crud-angular-and-spring-boot)
-- [Use React and Spring Boot to Build a Simple CRUD App](/blog/2018/07/19/simple-crud-react-and-spring-boot)
-- [Secure a Spring Microservices Architecture with Spring Security and OAuth 2.0](/blog/2018/02/13/secure-spring-microservices-with-oauth)
-- [10 Excellent Ways to Secure Your Spring Boot Application](/blog/2018/07/30/10-ways-to-secure-spring-boot)
-- [Build a Basic CRUD App with Angular 7.0 and Spring Boot 2.1](/blog/2018/08/22/basic-crud-angular-7-and-spring-boot-2)
-- [Tutorial: Develop a Mobile App With Ionic and Spring Boot](/blog/2017/05/17/develop-a-mobile-app-with-ionic-and-spring-boot)
-- [Build Your First Progressive Web Application with Angular and Spring Boot](/blog/2017/05/09/progressive-web-applications-with-angular-and-spring-boot)
-- [Secure your SPA with Spring Boot and OAuth](/blog/2017/10/27/secure-spa-spring-boot-oauth)
-- [Add Social Login to Your Spring Boot 2.0 App](/blog/2018/07/24/social-spring-boot)
-- [Secure Your Spring Boot Application with Multi-Factor Authentication](/blog/2018/06/12/mfa-in-spring-boot)
+	> **NOTE:** Putting secrets on the command line should ONLY be done for examples, do NOT do this in production.
+3. In your browser, navigate to: `http://localhost:8080`. Login with the user you set up with Okta
 
+## Learn More About Okta
+
+### Recommended Guides 
+
+* [Okta Authentication How To Guide](/docs/guides/sign-into-web-app/springboot/before-you-begin/){target="_blank" rel="noopener noreferrer"}
+* [Social Login](/docs/concepts/social-login/){target="_blank" rel="noopener noreferrer"}
+* [Validate access tokens](/docs/guides/validate-access-tokens){target="_blank" rel="noopener noreferrer"}
+* [Validate ID tokens](/docs/guides/validate-id-tokens){target="_blank" rel="noopener noreferrer"}
+* [Spring Security SAML](/code/java/spring_security_saml/){target="_blank" rel="noopener noreferrer"}
+
+### Related Blog Posts
+
+* [Build a Basic CRUD App with Angular 5.0 and Spring Boot 2.0](/blog/2017/12/04/basic-crud-angular-and-spring-boot){target="_blank" rel="noopener noreferrer"}
+* [Use React and Spring Boot to Build a Simple CRUD App](/blog/2018/07/19/simple-crud-react-and-spring-boot){target="_blank" rel="noopener noreferrer"}
+* [Secure a Spring Microservices Architecture with Spring Security and OAuth 2.0](/blog/2018/02/13/secure-spring-microservices-with-oauth){target="_blank" rel="noopener noreferrer"}
+* [10 Excellent Ways to Secure Your Spring Boot Application](/blog/2018/07/30/10-ways-to-secure-spring-boot){target="_blank" rel="noopener noreferrer"}
+* [Build a Basic CRUD App with Angular 7.0 and Spring Boot 2.1](/blog/2018/08/22/basic-crud-angular-7-and-spring-boot-2){target="_blank" rel="noopener noreferrer"}
+* [Tutorial: Develop a Mobile App With Ionic and Spring Boot](/blog/2017/05/17/develop-a-mobile-app-with-ionic-and-spring-boot){target="_blank" rel="noopener noreferrer"}
+* [Build Your First Progressive Web Application with Angular and Spring Boot](/blog/2017/05/09/progressive-web-applications-with-angular-and-spring-boot){target="_blank" rel="noopener noreferrer"}
+* [Secure your SPA with Spring Boot and OAuth](/blog/2017/10/27/secure-spa-spring-boot-oauth){target="_blank" rel="noopener noreferrer"}
+* [Add Social Login to Your Spring Boot 2.0 App](/blog/2018/07/24/social-spring-boot){target="_blank" rel="noopener noreferrer"}
+* [Secure Your Spring Boot Application with Multi-Factor Authentication](/blog/2018/06/12/mfa-in-spring-boot){target="_blank" rel="noopener noreferrer"}

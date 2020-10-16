@@ -38,7 +38,7 @@ languages:
       link: /code/python/
       icon: code-python-32
     - name: java
-      link: /code/java/
+      link: /code/java/spring/
       icon: code-java-32
     - name: .net
       link: /code/dotnet/aspnetcore/
