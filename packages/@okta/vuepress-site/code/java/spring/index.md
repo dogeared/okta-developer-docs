@@ -8,18 +8,9 @@ meta:
     content: Our guide details how to add user authentication to your Java Spring app.
 ---
 
-<ul class='language-tabs'>
-	<li >
-		<RouterLink to='/code/java/spring/'>
-			<i class='icon code-spring-32'></i><span>Spring</span>
-		</RouterLink>
-	</li>
-	<li>
-		<RouterLink to='/code/java/'>
-			<i class='icon code-java-32'></i><span>Java</span>
-		</RouterLink>
-	</li>
-</ul>
+* [<i class='icon code-spring-32'></i><span>Spring</span>](/code/java/spring/)
+* [<i class='icon code-java-32'></i><span>Java</span>](/code/java/)
+{.language-tabs}
 
 ## Get Started with Spring + Okta
 
@@ -53,7 +44,7 @@ New to Okta? Follow these instructions to get set up.
 
 ### 4. Build Okta into a Spring Boot App
 
-1. You'll be working with a Spring Boot sample from [this github repo](https://github.com/okta/samples-java-spring){target="_blank" rel="noopener noreferrer"}.
+1. You'll be working with a Spring Boot sample from [this github repo](https://github.com/okta/samples-java-spring).
 2. From your terminal, execute the following:
 
 	```bash
