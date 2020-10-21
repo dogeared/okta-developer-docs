@@ -57,7 +57,48 @@ New to Okta? Follow these instructions to get set up.
 	```
 
 	> **NOTE:** Putting secrets on the command line should ONLY be done for examples, do NOT do this in production.
-3. In your browser, navigate to: `http://localhost:8080`. Login with the user you set up with Okta
+3. In your browser, navigate to: `http://localhost:8080`. Login with the user you set up with Okta.
+
+### 5. A Look at the Spring Boot Code
+
+Here's a snippet from the Spring Security configuration:
+
+```java
+@Configuration
+static class WebConfig extends WebSecurityConfigurerAdapter {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+			// allow antonymous access to the root page
+			.antMatchers("/").permitAll()
+
+			// all other requests
+			.anyRequest().authenticated()
+
+			// set logout URL
+			.and().logout().logoutSuccessUrl("/")
+
+			// enable OAuth2/OIDC
+			.and().oauth2Client()
+			.and().oauth2Login();
+	}
+}
+```
+
+This is standard Spring Security configuration. Because of the deep integration the Okta Spring Boot Starter has with Spring Security, there is nothing Okta specific here.
+
+Here's a snippet from the `home.html` template:
+
+```html
+...
+<div th:if="${#authorization.expression('isAuthenticated()')}" class="text container">
+	<p>Welcome home, <span th:text="${#authentication.principal.attributes['name']}">Joe Coder</span>!</p>
+	...
+</div>
+...
+```
+
+Again, this is leveraging the regular [SpEL](https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html) constructs to (a) detect if a user is authenticated and (b) if so, show the user's name
 
 ## Learn More About Okta
 
