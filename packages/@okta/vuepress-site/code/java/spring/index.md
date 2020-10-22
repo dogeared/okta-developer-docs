@@ -98,7 +98,7 @@ Here's a snippet from the `home.html` template:
 ...
 ```
 
-Again, this is leveraging the regular [SpEL](https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html) constructs to (a) detect if a user is authenticated and (b) if so, show the user's name
+This is leveraging the regular [SpEL](https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html) constructs to (a) detect if a user is authenticated and (b) if so, show the user's name.
 
 ## Learn More About Okta
 
